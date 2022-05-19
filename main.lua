@@ -1,6 +1,6 @@
 local fisica = require("physics");  -- importa a biblioteca
 fisica.start();                 -- inicia a física
-fisica.setDrawMode("hybrid");   -- define como será a visualização dos elementos físicos
+fisica.setDrawMode("normal");   -- define como será a visualização dos elementos físicos
 fisica.setGravity(0, 9.8); --definindo gravidade horizontal e vertical
 
 display.setStatusBar(display.HiddenStatusBar);
@@ -43,16 +43,16 @@ fisica.addBody(peca, "static", { density=2 });
 -- local alien = display.newImageRect("images/Aliens/alienYellow_round.png", 30, 30);
 
 --funcoes evento
-local function criaAlien(ev)
-     local x = math.random(20, _w-20); 
-     local y = math.random(20, _h-20);
+-- local function criaAlien(ev)
+--      local x = math.random(20, _w-20); 
+--      local y = math.random(20, _h-20);
      
-     local alien = display.newImageRect("images/Aliens/alienYellow_round.png", x, y, 30);
-     alien.x = _w / 2 - alien.width / 2;
-     alien.y = 10;
-     alien.nome = "Alien"
-    --  alien:setFillColor(math.random(0,255/255), math.random(0,255/255), math.random(0,255/255));
-end
+--      local alien = display.newImageRect("images/Aliens/alienYellow_round.png", x, y, 30);
+--      alien.x = _w / 2 - alien.width / 2;
+--      alien.y = 10;
+--      alien.nome = "Alien"
+--     --  alien:setFillColor(math.random(0,255/255), math.random(0,255/255), math.random(0,255/255));
+-- end
 
 -- -- Adicionando o Alien à física
 -- fisica.addBody(alien, "dynamic", { density=1, bounce=1, radius=15 });
