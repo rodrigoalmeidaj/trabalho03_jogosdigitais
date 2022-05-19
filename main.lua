@@ -18,19 +18,19 @@ local fundo = display.newImageRect("images/Backgrounds/colored_grass.png", _h, _
 
 local madeiraEsquerda = display.newImageRect("images/Wood/elementWood015.png", 100, 30 );
 madeiraEsquerda.y = _h - madeiraEsquerda.height;
-madeiraEsquerda.nome = "madeiraEsquerda"
-fisica.addBody(madeiraEsquerda, "static", { density=2, bounce=0.2 });
+madeiraEsquerda.nome = "madeira"
+fisica.addBody(madeiraEsquerda, "static", { density=1, bounce=0.2 });
 
 local madeiraDireita = display.newImageRect("images/Wood/elementWood015.png", 100, 30);
 madeiraDireita.x = _w - madeiraDireita.width;
 madeiraDireita.y = _h - madeiraDireita.height;
-madeiraDireita.nome = "madeiraDireita"
-fisica.addBody(madeiraDireita, "static", { density=2, bounce=0.2 });
+madeiraDireita.nome = "madeira"
+fisica.addBody(madeiraDireita, "static", { density=1, bounce=0.2 });
 
 local MetalCentro = display.newImageRect("images/Metal/elementMetal016.png", 120, 30 );
 MetalCentro.x = _w-100 - MetalCentro.width;
 MetalCentro.y = _h - MetalCentro.height;
-MetalCentro.nome = "MetalCentro"
+MetalCentro.nome = "metal"
 fisica.addBody(MetalCentro, "static", { density=2, bounce=0.2 });
 
 local peca = display.newImageRect("images/Metal/elementMetal013.png", 80, 30);
@@ -40,7 +40,11 @@ peca.nome = "peca"
 fisica.addBody(peca, "static", { density=2 });
 
 --criando allien
--- local alien = display.newImageRect("images/Aliens/alienYellow_round.png", 30, 30);
+local alien = display.newImageRect("images/Aliens/alienYellow_round.png", 40, 40);
+alien.x = _w / 2 - alien.width / 2;
+alien.y = 10;
+fisica.addBody(alien, "dynamic", { density=1, bounce=1, radius=25 });
+alien.isFixedRotation=true
 
 --funcoes evento
 -- local function criaAlien(ev)
@@ -72,8 +76,8 @@ local function colideAlien(self, ev)
     if ev.phase == "began" then
         print(ev.target.nome .. " iniciou colisão com " .. ev.other.nome);
 
-        if ev.other.nome == "Pedra" or ev.other.nome == "Metal" then
-            --ev.other:removeSelf();
+        if ev.other.nome == "madeira" or ev.other.nome == "metalCentro" then
+            ev.other:removeSelf();
         end
     elseif ev.phase == "ended" then
         print(ev.target.nome .. " terminou colisão com " .. ev.other.nome);
